@@ -1,0 +1,28 @@
+hyperparams:
+  BikeRentalFeatureExtractor: {}
+  CustomColumnTransformer: {}
+  regressor:
+    n_estimators: 200
+    max_depth: null
+
+data:
+  filepath: timeseries.csv
+
+metrics:
+  - name: mean absolute error
+    params: {}
+
+search:
+  jobs: -1
+  grid:
+    BikeRentalFeatureExtractor: {}
+    CustomColumnTransformer: {}
+    regressor:
+      n_estimators: [50, 100, 200]
+      max_depth: [null, 10, 20, 30, 60]
+
+export:
+  output_dir: models
+
+reports:
+  dir: reports

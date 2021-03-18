@@ -10,7 +10,7 @@ import yaml
 import joblib
 from sklearn.base import BaseEstimator
 import pandas as pd
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV ,TimeSeriesSplit
 
 import data
 import model
@@ -82,12 +82,14 @@ def find_hyperparams(
     dummy_hyperparams = {name: {} for name in param_grid.keys()}
     estimator = model.build_estimator(dummy_hyperparams)
     scoring = metrics.get_scoring_function(metric["name"], **metric["params"])
+    time_series_spliter = TimeSeriesSplit(n_splits=5 , max_train_size=4)
     gs = GridSearchCV(
         estimator,
         _param_grid_to_sklearn_format(param_grid),
         n_jobs=n_jobs,
         scoring=scoring,
-        verbose=3,
+        verbose=4,
+        cv= time_series_spliter
     )
     split = "train"
     X, y = _get_dataset(_load_config(config_file, "data"), splits=[split])[split]

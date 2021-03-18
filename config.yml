@@ -2,24 +2,24 @@ hyperparams:
   BikeRentalFeatureExtractor: {}
   CustomColumnTransformer: {}
   regressor:
-    n_estimators: 200
-    max_depth: null
+    n_estimators: 2
+    max_depth: 15
 
 data:
   filepath: timeseries.csv
 
 metrics:
-  - name: mean absolute error
+  - name: bike number error
     params: {}
 
 search:
   jobs: -1
   grid:
     BikeRentalFeatureExtractor: {}
-    CustomColumnTransformer: {}
+    CustomColumnTransformer: {} 
     regressor:
-      n_estimators: [50, 100, 200]
-      max_depth: [null, 10, 20, 30, 60]
+      n_estimators: [2,3,4,5,6,8,12,10,25,50, 100,150, 200]
+      max_depth: [null,5,10,15,20,50,100,200]
 
 export:
   output_dir: models

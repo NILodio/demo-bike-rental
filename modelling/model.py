@@ -103,9 +103,9 @@ class CustomColumnTransformer(BaseEstimator, TransformerMixin):
         )   
 
     def fit(self, X, y=None):
-        print(list(X.columns))
-        print(self._float_columns)
-        print(self._categorical_columns)
+        # print(list(X.columns))
+        # print(self._float_columns)
+        # print(self._categorical_columns)
         self._column_transformer = self._column_transformer.fit(X, y=y)
         return self
 

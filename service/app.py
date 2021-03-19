@@ -16,8 +16,8 @@ from entities import ModelInput
 app = FastAPI(title="API to make inference with my great model", version="0.0.1")
 
 
-serialized_model_path = os.path.join(os.getcwd(),"2021-03-19 02 30 00+00 00","model.joblib")
-model_lib_dir =   os.path.join(os.getcwd(),"modelling")
+# serialized_model_path = os.path.join(os.getcwd(),"2021-03-19 02 30 00+00 00","model.joblib")
+# model_lib_dir =   os.path.join(os.getcwd(),"modelling")
 
 
 class Settings(BaseSettings):         

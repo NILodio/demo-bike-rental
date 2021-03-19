@@ -1,48 +1,74 @@
-BIKE-RENTAL
+# Demo-Bike-Rental
 ==============================
 
-A short description of the project.
+Los sistemas de bicicletas compartidas son una nueva generación de alquileres de bicicletas tradicionales en los que todo el proceso, desde la membresía, el alquiler y la devolución, se ha vuelto automático. A través de estos sistemas, el usuario puede alquilar fácilmente una bicicleta desde una posición particular y regresar a otra posición. Actualmente, hay alrededor de 500 programas de bicicletas compartidas en todo el mundo, que se componen de más de 500 mil bicicletas. Hoy en día, existe un gran interés en estos sistemas debido a su importante papel en el tráfico, el medio ambiente y la salud.
 
-Project Organization
-------------
+Aparte de las interesantes aplicaciones del mundo real de los sistemas de bicicletas compartidas, las características de los datos que generan estos sistemas los hacen atractivos para la investigación. A diferencia de otros servicios de transporte como autobús o metro, la duración del viaje, la posición de salida y llegada se registran explícitamente en estos sistemas. Esta función convierte el sistema de bicicletas compartidas en una red de sensores virtuales que se puede utilizar para detectar la movilidad en la ciudad. Por lo tanto, se espera que la mayoría de los eventos importantes en la ciudad puedan detectarse mediante el seguimiento de estos datos.
 
-    ├── README.md               <- The top-level README for developers using this project.
-    │
-    ├── docs                    <- A place to store documentation for the project
-    │
-    ├── notebooks               <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                              the creator's initials, and a short `-` delimited description, e.g.
-    │                              `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references              <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports                 <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures             <- Generated graphics and figures to be used in reporting
-    │
-    ├── modelling               <- Source code to develop the models and generate reports
-    │   ├── requirements.txt    <- Hold requirements for the project
-    │   ├── __init__.py         <- Makes modelling a Python module
-    │   │
-    │   ├── data.py             <- Objects to download or generate data
-    │   │
-    │   ├── models.py           <- Objects to define, train models and then use trained models to make
-    │   │                          predictions
-    │   │
-    │   ├── visualize.py        <- Objects to create exploratory and results oriented visualizations
-    │   │    
-    │   └── app.py              <- Application to execute everything from the command line
-    │
-    ├── service                 <- Source code to expose your model as a service
-    │   ├── requirements.txt    <- Makes src a Python module
-    │   ├── __init__.py         <- Makes service a Python module
-    │   │
-    │   └── app.py              <- Objects to download or generate data
-    │
-    ├── tests                   <- Where you check that your code actually works as expected
-    │
-    └── setup.cfg               <- File holding settings for your project
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Pakages
 
 
---------
+```
+pip install -r requirements.txt
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+```
+
+## Entrenamiento
+
+Usa la aplicación de línea de comando modelling/app.py para realizar los procesos de busqueda de parametros y entrenamiento del modelo
+
+### Pruebas : Ejemplos
+
+El archivo config.yml contiene los parametros e instancias que se pueden modificar para el entrenamiento y busqueda de parametros 
+
+```
+python modellin/app.py train config.yml #
+
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
+

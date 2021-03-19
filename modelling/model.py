@@ -33,19 +33,6 @@ class BikeRentalFeatureExtractor(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
     
-    def extract(self):
-        ###Variables Tiempo
-        s_day = self.new_features.index[0]
-        #print(timedelta(hours = 1))
-        #print(self.new_features.index[-1])
-        l_day = self.new_features.index[-1] - timedelta(hours = 1)
-        ###Crear variables para las new feactures
-        values = np.concatenate(
-            (self.new_features.loc[:s_day , 'hum'].values,
-            self.new_features.loc[:l_day , 'hum'].values)
-        )
-        self.new_features['p_hum'] = values
-    
     def rolling_feactures(self):
         self.new_features['rolling_tem_3'] = self.new_features.temp.rolling(3 ,win_type = 'triang').mean()
         self.new_features['rolling_tem_4'] = self.new_features.temp.rolling(4 ,win_type = 'triang').mean()
@@ -72,8 +59,8 @@ class BikeRentalFeatureExtractor(BaseEstimator, TransformerMixin):
     def transform(self, X):
         self.new_features = X.copy()
         X = X.copy()
-        self.extract()
         self.rolling_feactures()
+        # print(self.new_features.columns)
         return self.new_features
 
 
@@ -84,7 +71,7 @@ class CustomColumnTransformer(BaseEstimator, TransformerMixin):
 
 
     _float_columns = (
-        "temp,atemp,hum,windspeed,registered,p_hum,rolling_tem_3,rolling_tem_4,rolling_windspeed_3,"
+        "temp,atemp,hum,windspeed,registered,rolling_tem_3,rolling_tem_4,rolling_windspeed_3,"
         + "rolling_windspeed_4,registered_4_day_before,registered_2_day_before"
     ).split(",")
 

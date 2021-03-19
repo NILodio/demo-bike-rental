@@ -1,5 +1,0 @@
-BikeRentalFeatureExtractor: {}
-CustomColumnTransformer: {}
-regressor:
-  max_depth: 15
-  n_estimators: 2

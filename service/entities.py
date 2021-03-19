@@ -59,6 +59,7 @@ Holiday_Literal = te.Literal[0 , 1]
 Week_Literal = te.Literal[0 , 1 ,2 , 3 , 4 , 5 , 6]
 WorkingDay_Literal = te.Literal[0 , 1 ]
 Weathersit_Literal = te.Literal[1 ,2 , 3 , 4]
+mnth_Literal = te.Literal[1 , 2 , 3 , 4 , 5 , 6 , 7 ,8 ,9 ,10 ,11 ,12]
 
 class SeasonInteger(ConstrainedInt):
     ge = 1
@@ -72,6 +73,7 @@ class HourInteger(ConstrainedInt):
 class ModelInput(BaseModel):
     season: SeasonInteger
     yr: int
+    mnth : mnth_Literal
     hr: HourInteger
     holiday: Holiday_Literal
     weekday: Week_Literal
@@ -81,4 +83,4 @@ class ModelInput(BaseModel):
     atemp : float
     hum : float
     windspeed : float
-    registered : int
+    registered: int 

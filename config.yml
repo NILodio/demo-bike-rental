@@ -2,7 +2,7 @@ hyperparams:
   BikeRentalFeatureExtractor: {}
   CustomColumnTransformer: {}
   regressor:
-    n_estimators: 2
+    n_estimators: 4
     max_depth: 15
 
 data:

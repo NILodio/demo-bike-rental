@@ -1,4 +1,5 @@
 import sys
+import os
 import typing as t
 from datetime import datetime
 from functools import lru_cache
@@ -15,7 +16,11 @@ from entities import ModelInput
 app = FastAPI(title="API to make inference with my great model", version="0.0.1")
 
 
-class Settings(BaseSettings):
+serialized_model_path = os.path.join(os.getcwd(),"2021-03-19 02 30 00+00 00","model.joblib")
+model_lib_dir =   os.path.join(os.getcwd(),"modelling")
+
+
+class Settings(BaseSettings):         
     serialized_model_path: str
     model_lib_dir: str
 
@@ -71,12 +76,14 @@ def load_estimator():
 
 
 class Logger:
-    def __init__(self, file: t.TextIO = sys.stdout):
-        self.file = file
+    def __init__(self, file = "loggs.txt"):
+        self.filepath = file
+        
 
-    def log(self, inputs: t.List[ModelInput]):
-        for row in inputs:
-            record = {"datetime": datetime.now(), "input": row.dict()}
+    def log(self, inputs: t.List[ModelInput], predictions):
+        self.file = open(self.filepath ,"a")
+        for row , pred in zip(inputs,predictions):
+            record = {"datetime": datetime.now(), "input": row.dict() ,"output" : pred}
             print(record, file=self.file)
 
 
@@ -90,9 +97,9 @@ async def make_prediction(
     estimator=Depends(load_estimator),
     logger=Depends(get_logger),
 ):
-    logger.log(inputs)
     X = pd.DataFrame([row.dict() for row in inputs])
     prediction = estimator.predict(X).tolist()
+    logger.log(inputs,prediction)
     return prediction
 
 
